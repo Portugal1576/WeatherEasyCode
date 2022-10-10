@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainWeatherFragment">
+
+    <fragment
+        android:id="@+id/mainWeatherFragment"
+        android:name="com.portugal1576.weathereasycode.ui.MainWeatherFragment"
+        android:label="fragment_main_weather"
+        tools:layout="@layout/fragment_main_weather" >
+        <action
+            android:id="@+id/action_mainWeatherFragment_to_detailWeatherFragment"
+            app:destination="@id/detailWeatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailWeatherFragment"
+        android:name="com.portugal1576.weathereasycode.ui.DetailWeatherFragment"
+        android:label="fragment_detail_weather"
+        tools:layout="@layout/fragment_detail_weather" />
+</navigation>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WeatherEasyCode</string>
+    <string name="city">City</string>
+    <string name="temp">Temperature</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind">Wind</string>
+</resources>
