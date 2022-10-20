@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.portugal1576.weathereasycode.databinding.ItemCityWeatherBinding
-import com.portugal1576.weathereasycode.model.City
+import com.portugal1576.weathereasycode.data.model.City
 
 class CustomRecyclerAdapter(private val cities: List<City>) : RecyclerView
 .Adapter<CustomRecyclerAdapter.MyViewHolder>() {
