@@ -1,32 +1,41 @@
 package com.portugal1576.weathereasycode.data.repository
 
-import android.util.Log
-import com.portugal1576.weathereasycode.data.api.ApiAdapter
-import com.portugal1576.weathereasycode.data.model.DataWeather
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.portugal1576.weathereasycode.data.api.WeatherService
+import com.portugal1576.weathereasycode.data.model.WeatherCloud
 
-class MainRepository() {
+interface WeatherRepository {
+    suspend fun weather(city: String): WeatherCloud
 
-    fun loadCities(): List<String> {
-        return listOf("Lisbon","Kiyiv","Madrid","Paris","Berlin","Copenhagen","Rome","London",
-            "Dublin","Prague","Vienna")
-    }
+    class Base(private val service: WeatherService) : WeatherRepository {
 
-    fun getWeather() =  CoroutineScope(Dispatchers.Main).launch {
-        try {
-            val response = ApiAdapter.apiClient.getWeather()
-            if (response.isSuccessful && response.body() != null) {
+        override suspend fun weather(city: String): WeatherCloud {
+            return  service.getWeather(API_KEY, city, "no")
+        }
 
-                val data = response.body()!!
-                Log.d("TAG", data.toString())
-
-            } else {
-                Log.d("TAG", "Error Occurred: ${response.message()}")
-            }
-        } catch (e: Exception) {
-            Log.d("TAG", "Error Occurred: ${e.message}")
+        companion object {
+            private const val API_KEY = "3dfc034a5dac49d9977161358220507"
         }
     }
 }
+
+
+//class MainRepository() {
+
+
+//    fun getWeather(city: String) =  CoroutineScope(Dispatchers.Main).launch {
+//        try {
+//            val response = ApiAdapter.apiClient.getWeather(API_KEY, city, "no")
+//            if (response.isSuccessful && response.body() != null) {
+//
+//                val data = response.body()!!
+//                Log.d("TAG", data.toString())
+//
+//            } else {
+//                Log.d("TAG", "Error Occurred: ${response.message()}")
+//            }
+//        } catch (e: Exception) {
+//            Log.d("TAG", "Error Occurred: ${e.message}")
+//        }
+//    }
+
+
