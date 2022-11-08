@@ -41,9 +41,9 @@ class MainWeatherFragment : Fragment() {
         view.findViewById<Button>(R.id.button).setOnClickListener {
             viewModel.map("")
         }
-        viewModel.observe(this) {
-            var text = it
-        }
+//        viewModel.observe(this) {
+//            var text = it
+//        }
     }
 
     override fun onDestroy() {
