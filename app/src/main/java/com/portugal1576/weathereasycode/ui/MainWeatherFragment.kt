@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import com.portugal1576.weathereasycode.R
-import com.portugal1576.weathereasycode.adapters.CustomRecyclerAdapter
+import com.portugal1576.weathereasycode.adapters.MyAdapter
 import com.portugal1576.weathereasycode.data.api.Service
 import com.portugal1576.weathereasycode.data.api.WeatherService
+import com.portugal1576.weathereasycode.data.repository.CityRepository
 import com.portugal1576.weathereasycode.data.repository.WeatherRepository
 
 
 class MainWeatherFragment : Fragment() {
 
 
-    private lateinit var adapter: CustomRecyclerAdapter
+    private lateinit var adapter: MyAdapter
 
     private val viewModel =
         WeatherViewModel(
@@ -39,13 +38,11 @@ class MainWeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val input = view.findViewById<EditText>(R.id.input)
         view.findViewById<Button>(R.id.button).setOnClickListener {
-            viewModel.map(input.text.toString())
+            viewModel.map("")
         }
-        val text = view.findViewById<TextView>(R.id.text)
         viewModel.observe(this) {
-            text.text = it
+            var text = it
         }
     }
 

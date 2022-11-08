@@ -17,25 +17,15 @@ interface WeatherRepository {
         }
     }
 }
+interface  CityRepository{
+        fun getCity(): String
+    class Base: CityRepository{
+        override fun getCity(): String {
+            return "London"
+        }
 
+    }
+}
 
-//class MainRepository() {
-
-
-//    fun getWeather(city: String) =  CoroutineScope(Dispatchers.Main).launch {
-//        try {
-//            val response = ApiAdapter.apiClient.getWeather(API_KEY, city, "no")
-//            if (response.isSuccessful && response.body() != null) {
-//
-//                val data = response.body()!!
-//                Log.d("TAG", data.toString())
-//
-//            } else {
-//                Log.d("TAG", "Error Occurred: ${response.message()}")
-//            }
-//        } catch (e: Exception) {
-//            Log.d("TAG", "Error Occurred: ${e.message}")
-//        }
-//    }
 
 

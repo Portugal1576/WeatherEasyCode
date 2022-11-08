@@ -8,21 +8,13 @@
     android:padding="5dp"
     tools:context=".ui.MainWeatherFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weather" />
+        android:text="Weather"
+        tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_city"

@@ -1,14 +1,17 @@
 package com.portugal1576.weathereasycode.ui
 
 import androidx.lifecycle.*
+import com.portugal1576.weathereasycode.data.repository.CityRepository
 import com.portugal1576.weathereasycode.data.repository.WeatherRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WeatherViewModel(
-    private val repository: WeatherRepository,
+    private val weatherRepository: WeatherRepository,
     private val communication: Communication
 ) : ViewModel(), Communication {
+    private val cityRepository = CityRepository.Base()
+
     override fun observe(owner: LifecycleOwner, observer: Observer<String>) {
         communication.observe(owner, observer)
     }
@@ -16,7 +19,7 @@ class WeatherViewModel(
     override fun map(text: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result = repository.weather(text)
+                val result = weatherRepository.weather(cityRepository.getCity())
                 communication.map(result.toString())
             } catch (e: Exception){
                 communication.map(e.stackTraceToString())
