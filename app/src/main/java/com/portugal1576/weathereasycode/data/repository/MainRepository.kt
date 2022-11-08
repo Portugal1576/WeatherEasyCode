@@ -22,10 +22,17 @@ interface  CityRepository{
     class Base: CityRepository{
         override fun getCity(): String {
             return "London"
+
+        }
+        val cities = arrayListOf<String>().apply {
+            add("London")
+            add("Lisbon")
+            add("Kiev")
         }
 
     }
 }
+
 
 
 

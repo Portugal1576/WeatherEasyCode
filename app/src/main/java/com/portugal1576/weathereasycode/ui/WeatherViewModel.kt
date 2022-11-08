@@ -13,16 +13,19 @@ class WeatherViewModel(
 ) : ViewModel(), Communication {
     private val cityRepository = CityRepository.Base()
 
-//    override fun observe(owner: LifecycleOwner, observer: Observer<String>) {
-//        communication.observe(owner, observer)
-//    }
-
+ 
+    val weatherResult = MutableLiveData<ArrayList<WeatherCloud>>()
     override fun map(text: String) {
+
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result = weatherRepository.weather(cityRepository.toString())
-                communication.map(result.toString())
-            } catch (e: Exception){
+                val result = arrayListOf<WeatherCloud>()
+                for (city in cityRepository.cities) {
+                    result.add(weatherRepository.weather(city))
+                }
+                weatherResult.postValue(result)
+
+            } catch (e: Exception) {
                 communication.map(e.stackTraceToString())
             }
 
@@ -34,7 +37,7 @@ class WeatherViewModel(
 
 interface Communication {
 
-//    fun observe(owner: LifecycleOwner, observer: Observer<String>)
+    //    fun observe(owner: LifecycleOwner, observer: Observer<String>)
     fun map(text: String)
 
     class Base(private val liveData: MutableLiveData<String>) : Communication {

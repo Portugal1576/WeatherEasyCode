@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.portugal1576.weathereasycode.R
 import com.portugal1576.weathereasycode.adapters.MyAdapter
 import com.portugal1576.weathereasycode.data.api.Service
@@ -38,13 +40,17 @@ class MainWeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.weatherResult.observe(viewLifecycleOwner, Observer {
+           val wether = it
+            val rv = view.findViewById<RecyclerView>(R.id.rv_list_city)
+            rv.adapter = MyAdapter(wether)
+        })
         view.findViewById<Button>(R.id.button).setOnClickListener {
+
             viewModel.map("")
         }
-        viewModel.observe(this) {
-            var text = it
-        }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

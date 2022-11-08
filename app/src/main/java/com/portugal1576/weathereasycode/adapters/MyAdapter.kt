@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.portugal1576.weathereasycode.R
 import com.portugal1576.weathereasycode.data.model.City
+import com.portugal1576.weathereasycode.data.model.WeatherCloud
 
 //class CustomRecyclerAdapter(private val cities: List<City>) : RecyclerView
 //.Adapter<CustomRecyclerAdapter.MyViewHolder>() {
@@ -33,7 +34,7 @@ import com.portugal1576.weathereasycode.data.model.City
 //}
 
 
-class MyAdapter(private val city: ArrayList<City>) :
+class MyAdapter(private val city: ArrayList<WeatherCloud>) :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
 
@@ -47,8 +48,8 @@ class MyAdapter(private val city: ArrayList<City>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = city[position]
 //        holder.titleImage.setImageResource(currentItem.titleImage)
-        holder.tv_city.text = currentItem.city
-        holder.tv_temperature.text = currentItem.temp.toString()
+        holder.tv_city.text = currentItem.location.name
+        holder.tv_temperature.text = currentItem.current.temp_c.toString()
     }
 
     override fun getItemCount(): Int {
