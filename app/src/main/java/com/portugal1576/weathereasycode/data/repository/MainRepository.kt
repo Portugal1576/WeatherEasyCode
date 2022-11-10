@@ -18,9 +18,9 @@ interface WeatherRepository {
     }
 }
 interface  CityRepository{
-        fun getCity(): String
+    suspend fun getCity(): String
     class Base: CityRepository{
-        override fun getCity(): String {
+        override suspend fun getCity(): String {
             return "London"
 
         }
@@ -28,11 +28,18 @@ interface  CityRepository{
             add("London")
             add("Lisbon")
             add("Kiev")
+            add("Rome")
+            add("Vienna")
+            add("Porto")
+            add("Berlin")
+            add("Minsk")
+            add("Paris")
+            add("Bern")
+            add("Prague")
         }
 
     }
 }
-
 
 
 

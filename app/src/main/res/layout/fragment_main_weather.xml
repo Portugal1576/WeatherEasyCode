@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/autumn_portrait"
     android:orientation="vertical"
     android:padding="5dp"
     tools:context=".ui.MainWeatherFragment">
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Weather"
-        tools:ignore="HardcodedText" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/underline"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="48sp"
+            android:text="@string/Weather" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="#E6E6E5"
+        android:visibility="visible"
+        tools:visibility="visible" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_city"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+</FrameLayout>

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -39,18 +41,25 @@ class MainWeatherFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val rv = view.findViewById<RecyclerView>(R.id.rv_list_city)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val contentLayout = view.findViewById<LinearLayout>(R.id.contentLayout)
+
+
         super.onViewCreated(view, savedInstanceState)
         viewModel.weatherResult.observe(viewLifecycleOwner, Observer {
-           val wether = it
-            val rv = view.findViewById<RecyclerView>(R.id.rv_list_city)
-            rv.adapter = MyAdapter(wether)
+            val weather = it
+            if (weather != null) {
+                rv.adapter = MyAdapter(weather)
+                progressBar.visibility = View.GONE
+                contentLayout.visibility = View.VISIBLE
+            }
+
         })
-        view.findViewById<Button>(R.id.button).setOnClickListener {
+        viewModel.map("")
 
-            viewModel.map("")
-        }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

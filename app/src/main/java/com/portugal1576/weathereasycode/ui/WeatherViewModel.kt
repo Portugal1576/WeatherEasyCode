@@ -13,7 +13,7 @@ class WeatherViewModel(
 ) : ViewModel(), Communication {
     private val cityRepository = CityRepository.Base()
 
- 
+
     val weatherResult = MutableLiveData<ArrayList<WeatherCloud>>()
     override fun map(text: String) {
 

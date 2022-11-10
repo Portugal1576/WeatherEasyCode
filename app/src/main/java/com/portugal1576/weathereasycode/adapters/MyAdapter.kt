@@ -49,7 +49,7 @@ class MyAdapter(private val city: ArrayList<WeatherCloud>) :
         val currentItem = city[position]
 //        holder.titleImage.setImageResource(currentItem.titleImage)
         holder.tv_city.text = currentItem.location.name
-        holder.tv_temperature.text = currentItem.current.temp_c.toString()
+        holder.tv_temperature.text = currentItem.current.temp_c.toString() + " ℃"
     }
 
     override fun getItemCount(): Int {
