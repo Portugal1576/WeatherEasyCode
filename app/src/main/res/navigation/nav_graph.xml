@@ -18,5 +18,9 @@
         android:id="@+id/detailWeatherFragment"
         android:name="com.portugal1576.weathereasycode.ui.DetailWeatherFragment"
         android:label="fragment_detail_weather"
-        tools:layout="@layout/fragment_detail_weather" />
+        tools:layout="@layout/fragment_detail_weather" >
+        <action
+            android:id="@+id/action_detailWeatherFragment_to_mainWeatherFragment"
+            app:destination="@id/mainWeatherFragment" />
+    </fragment>
 </navigation>

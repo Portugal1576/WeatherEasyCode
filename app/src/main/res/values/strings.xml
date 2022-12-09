@@ -5,4 +5,8 @@
     <string name="pressure">Pressure</string>
     <string name="wind">Wind</string>
     <string name="Weather">Weather</string>
+    <string name="cel"> ℃</string>
+    <string name="next">Next</string>
+    <string name="icon">icon</string>
+    <string name="humidity">Humidity</string>
 </resources>

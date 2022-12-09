@@ -25,16 +25,12 @@ interface  CityRepository{
 
         }
         val cities = arrayListOf<String>().apply {
-            add("London")
-            add("Lisbon")
             add("Kiev")
+            add("Lisbon")
+            add("London")
             add("Rome")
-            add("Vienna")
-            add("Porto")
-            add("Berlin")
             add("Minsk")
             add("Paris")
-            add("Bern")
             add("Prague")
         }
 

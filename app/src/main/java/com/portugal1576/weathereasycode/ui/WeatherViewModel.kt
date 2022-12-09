@@ -37,14 +37,9 @@ class WeatherViewModel(
 
 interface Communication {
 
-    //    fun observe(owner: LifecycleOwner, observer: Observer<String>)
     fun map(text: String)
 
     class Base(private val liveData: MutableLiveData<String>) : Communication {
-//        override fun observe(owner: LifecycleOwner, observer: Observer<String>) {
-//            liveData.observe(owner, observer)
-//        }
-
         override fun map(text: String) {
             liveData.postValue(text)
         }
